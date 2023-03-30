@@ -13,8 +13,9 @@ class GradientDescent:
 
   def batch(self, n_iter, beta=None, n_batch=None):
     n_batch = 10 if n_batch is None else n_batch
-    _X = np.split(self.X, n_batch)[np.random.randint(0, 9)]
-    _y = np.split(self.y, n_batch)[np.random.randint(0, 9)]
+    rnd_batch_idx =np.random.randint(0, n_batch-1)
+    _X = np.split(self.X, n_batch)[rnd_batch_idx]
+    _y = np.split(self.y, n_batch)[rnd_batch_idx]
 
     if beta is None:
       _beta = np.random.rand(self.D)
