@@ -28,10 +28,10 @@ class GradientDescent:
     betas = [_beta]
 
     for _ in range(n_iter):
-      grad = _X.T.dot(_X.dot(_beta) - _y) / self.N
+      grad = _X.T.dot(_X.dot(_beta) - _y) / _X.shape[0]
       _beta -= self.lr * grad
       # save metrics
       losses.append(Metrics.mse(_X, _y, _beta))
-      betas.append(beta.copy())
+      betas.append(_beta.copy())
 
     return np.array(betas), np.array(losses)
